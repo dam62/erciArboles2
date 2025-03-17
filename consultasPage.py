@@ -29,9 +29,13 @@ def main(page: ft.Page):
         cargar_tabla(lista_arboles)
         page.update()
 
+    def volver(e):
+        page.go("/formulario")
+
     # OBJETOS
     nombre_tf = ft.TextField(label="Nombre", width=300)
     buscar_btn = ft.ElevatedButton("Buscar", on_click=buscar_arboles, width=300)
+    volver_btn = ft.ElevatedButton(text="volver", on_click=volver)
     tabla = ft.DataTable(bgcolor="blue",
         columns=[
             ft.DataColumn(ft.Text("ID")),
@@ -48,10 +52,11 @@ def main(page: ft.Page):
             nombre_tf,
             buscar_btn,
             tabla,
+            volver_btn,
         ]
     )
 
     # page.add(columna_datos)
     consultar_arboles()
 
-    return consultar_arboles
+    return columna_datos

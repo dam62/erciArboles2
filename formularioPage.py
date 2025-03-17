@@ -28,6 +28,9 @@ def main(page : ft.Page):
         fecha = date_picker.value
         ddbb.insertar_arbol(nombre, tipo, altura, fecha)
 
+    def volver(e):
+        page.go("/consultas")
+
     # OBJETOS
     nombre_tf = ft.TextField(label="Nombre", width=300)
     tipos_drop = ft.Dropdown(label="Tipo", width=300, options=get_tipos())
@@ -35,6 +38,8 @@ def main(page : ft.Page):
 
     date_picker = ft.DatePicker(on_change=seleccionar_fecha, value=datetime.datetime.now())
     fecha_txt = ft.Text(f"{date_picker.value.day}/{date_picker.value.month}/{date_picker.value.year}")
+    volver_btn = ft.ElevatedButton(text="volver", on_click=volver)
+
     columna_datos = ft.Column(
         controls=[ft.Text("ÁRBOLES", size=40),
                   nombre_tf,
@@ -42,7 +47,8 @@ def main(page : ft.Page):
                   altura_tf,
                   fecha_txt,
                   ft.FilledButton("SELECCIONAR FECHA", on_click=abrir_selector),
-                  ft.FilledButton("CREAR ÁRBOL", on_click=crear_arbol),],
+                  ft.FilledButton("CREAR ÁRBOL", on_click=crear_arbol),
+                  volver_btn,],
     )
     page.overlay.append(date_picker)
     # page.add(columna_datos)
