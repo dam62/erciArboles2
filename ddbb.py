@@ -5,9 +5,9 @@ def connect():
     conn = psycopg2.connect(
         dbname="jardin",
         user="postgres",
-        password="1234",
-        host="192.168.96.128",
-        port="5433"
+        password="06_dam62",
+        host="localhost",
+        port="4445"
     )
     return conn
 
